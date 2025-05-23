@@ -1,8 +1,9 @@
-# Trendies Maroc — Price Suggestion Feature
+# Price Suggestion Feature
 
 This repository contains a technical challenge submission implementing the **Price Suggestion** feature in the product listing form.
 
 Live site: [https://trendies-price-suggestion.vercel.app/new-listing](https://trendies-price-suggestion.vercel.app/new-listing)
+Example: Try "Omega" for Brand and "Watches" for Category.
 
 ---
 
@@ -36,7 +37,7 @@ When a seller fills out the product listing form, the app automatically suggests
 - The NestJS backend uses Prisma to query the database for matching products and retrieves their prices.
 - It calculates the average price and returns it to the frontend.
 - The frontend displays the suggested price and auto-fills the price input if it is empty.
-- Form submission currently logs the form data to the console (submission logic is stubbed for this challenge).
+- Form submission currently logs the form data to the console.
 
 ---
 
@@ -52,4 +53,4 @@ When a seller fills out the product listing form, the app automatically suggests
 - Advanced Price Suggestion Algorithms: Incorporate machine learning or statistical models to suggest prices more accurately, considering additional factors like product condition, seller ratings, seasonal trends, and price fluctuations over time.
 - User Personalisation: Tailor price suggestions based on the seller’s past listings, location, or preferences.
 - Form Validation & UX Enhancements: Add inline validation with helpful tooltips, clear error messages, and loading skeletons or spinners to improve form responsiveness and clarity.
-- Extend API for Additional Filters: Allow price suggestions to factor in more granular filters like product condition, color, or size.
+- Extend API for Additional Filters: Allow price suggestions to factor in more granular filters like product condition, colour, or size.
