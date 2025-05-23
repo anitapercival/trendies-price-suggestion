@@ -25,6 +25,8 @@ const PricingDetails: React.FC<PricingDetailsProps> = ({ productTitle, onBack })
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+
   const handleGetSuggestion = async () => {
     if (!productTitle) {
       setError("Product title is missing.");
@@ -37,13 +39,11 @@ const PricingDetails: React.FC<PricingDetailsProps> = ({ productTitle, onBack })
       const res = await axios.get<{
         suggestedMinBid: number | null;
         suggestedBuyNow: number | null;
-      }>("http://localhost:3001/market/scan-price", {
+      }>(`${API_URL}/market/scan-price`, {
         params: { product: productTitle },
       });
 
       const { suggestedMinBid, suggestedBuyNow } = res.data;
-
-
 
       if (suggestedMinBid !== null) {
         setMinBid(suggestedMinBid.toFixed(2));
@@ -54,7 +54,6 @@ const PricingDetails: React.FC<PricingDetailsProps> = ({ productTitle, onBack })
       if (suggestedBuyNow !== null) {
         setBuyNowPrice(suggestedBuyNow.toFixed(2));
       } else {
-        // Not necessarily error — buy now is optional
         setBuyNowPrice("");
       }
     } catch {
@@ -148,7 +147,7 @@ const PricingDetails: React.FC<PricingDetailsProps> = ({ productTitle, onBack })
 
             <div className="flex justify-between items-center mt-4">
               <span>Suggested Buy Now Price</span>
-              <span>{buyNowPrice || "-" } MAD</span>
+              <span>{buyNowPrice || "-"} MAD</span>
             </div>
           </div>
 
