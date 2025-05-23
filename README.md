@@ -5,6 +5,11 @@ This repository contains a technical challenge submission implementing the **Pri
 Live site: [https://trendies-price-suggestion.vercel.app/new-listing](https://trendies-price-suggestion.vercel.app/new-listing)
 Example: Try "Omega" for Brand and "Watches" for Category.
 
+<img width="500" alt="Screenshot 2025-05-23 at 09 46 36" src="https://github.com/user-attachments/assets/68ae95dd-4437-4d49-bc03-f14b6ccd757b" />
+
+<img width="200" alt="Screenshot 2025-05-23 at 09 58 27" src="https://github.com/user-attachments/assets/ca309c61-5c6c-4468-aaba-c2f3e9ca6883" />
+
+
 ---
 
 ## Feature Overview
