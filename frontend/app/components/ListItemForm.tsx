@@ -41,7 +41,7 @@ export default function ListItemForm() {
           category: formData.category,
         })
 
-        const res = await fetch(`http://localhost:3001/products/price-suggestion?${query.toString()}`)
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/products/price-suggestion?${query.toString()}`);
         if (!res.ok) throw new Error('Failed to fetch price suggestion')
 
         const data = await res.json()
