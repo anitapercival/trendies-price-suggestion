@@ -1,61 +1,42 @@
 # Price Suggestion Feature
 
-This repository contains a technical challenge submission implementing the **Price Suggestion** feature in the product listing form.
+This feature helps sellers determine competitive pricing based on real-time market data by suggesting a **minimum bid** and an optional **buy now** price when listing a new product.
 
-Live site: [https://trendies-price-suggestion.vercel.app/new-listing](https://trendies-price-suggestion.vercel.app/new-listing)
-Example: Try "Omega" for Brand and "Watches" for Category.
-
-<img width="500" alt="Screenshot 2025-05-23 at 09 46 36" src="https://github.com/user-attachments/assets/68ae95dd-4437-4d49-bc03-f14b6ccd757b" />
-
-<img width="200" alt="Screenshot 2025-05-23 at 09 58 27" src="https://github.com/user-attachments/assets/ca309c61-5c6c-4468-aaba-c2f3e9ca6883" />
-
+> It searches based on the title of the item but it will be able to do more intelligent searches like condition, size, material, colour and gender which I am currently implementing.
 
 ---
 
-## Feature Overview
+## Live App
 
-### Price Suggestion
-
-When a seller fills out the product listing form, the app automatically suggests a price based on the selected **brand** and **category**. This is done by querying existing product prices in the database to calculate an average price, helping sellers price their items competitively.
-
-- If both brand and category are selected, prices are fetched for products matching both.
-- If no matches, fallback queries by category or brand alone are performed.
-- The average price from matched products is calculated and suggested.
-- The suggested price is auto-filled in the form if the price field is empty.
-- If no data is found, no suggestion is shown.
+- **Live App**: _https://trendies-price-suggestion.vercel.app/new-listing(https://trendies-price-suggestion.vercel.app/new-listing)_
 
 ---
 
-## Tech Stack
+## What It Does
 
-- **Frontend:** Next.js 15, React 19, Tailwind CSS  
-- **Backend:** NestJS, Prisma, PostgreSQL  
-- **Tooling:** TypeScript, pnpm (monorepo)  
-- **Deployment:** Vercel  
-
----
-
-# How It Works
-
-- The frontend form component uses React state and effects to track the listing data.
-- When brand or category changes, it triggers a fetch request to the backend endpoint /products/price-suggestion.
-- The NestJS backend uses Prisma to query the database for matching products and retrieves their prices.
-- It calculates the average price and returns it to the frontend.
-- The frontend displays the suggested price and auto-fills the price input if it is empty.
-- Form submission currently logs the form data to the console.
+- Adds a **GET PRICE SUGGESTION** button to the product submission form.
+- Fetches **market prices** from Google Shopping via SerpAPI (as an example, this will be expanded to more APIs and web scraping).
+- Calculates and displays:
+  - Suggested **Minimum Bid** (70% of median market price)
+  - Suggested **Buy Now Price** (110% of median market price)
+  - Platform fee breakdown: commission, service, and seller fees
+  - Net amount seller receives
+- Handles all API errors gracefully.
 
 ---
 
-# Code Highlights
-- Backend Endpoint: GET /products/price-suggestion
-- Queries the product table filtering by brand and/or category, calculates average price, handles errors gracefully.
-- Frontend Form: Uses React hooks (useState, useEffect) to manage form data and fetch price suggestions dynamically.
-- Responsive, adapting layout and size to various screen widths to ensure the UI remains clean and usable on mobile, tablet, and desktop devices.
+## Future Improvements
 
----
+- Currently working on more detailed searches like condition, size, material, colour and gender, which affect the suggested price (in testing at the moment).
+- For now only uses
 
-# Improvements & Next Steps
-- Advanced Price Suggestion Algorithms: Incorporate machine learning or statistical models to suggest prices more accurately, considering additional factors like product condition, seller ratings, seasonal trends, and price fluctuations over time.
-- User Personalisation: Tailor price suggestions based on the seller’s past listings, location, or preferences.
-- Form Validation & UX Enhancements: Add inline validation with helpful tooltips, clear error messages, and loading skeletons or spinners to improve form responsiveness and clarity.
-- Extend API for Additional Filters: Allow price suggestions to factor in more granular filters like product condition, colour, or size.
+## 🔧 Improvements & Future Work
+
+| Area              | Suggestion                                                                 |
+|-------------------|---------------------------------------------------------------------------|
+| Accuracy          | Incorporate condition, size, material, colour and gender for more precise matching (currently testing this)                    |
+| Performance       | Because the API fetch can be slow at times, trigger price suggestion in the **previous step** to prefetch data in the background, reducing wait time and improving UX |
+| Validation        | Add product title sanitisation and debouncing                             |
+| Error Handling    | Show user-friendly messages for edge cases                                |
+| Data Sources      | Expand beyond SerpAPI — integrate **multiple APIs** and **web scraping** to increase price coverage and robustness |
+| Predictive Pricing| Use a **machine learning model** trained on product attributes and historical prices to suggest pricing |
