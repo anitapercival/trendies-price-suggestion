@@ -30,7 +30,7 @@ This feature helps sellers determine competitive pricing based on real-time mark
 - Currently working on more detailed searches like condition, size, material, colour and gender, which affect the suggested price (in testing at the moment).
 - For now only uses
 
-## 🔧 Improvements & Future Work
+## Improvements & Future Work
 
 | Area              | Suggestion                                                                 |
 |-------------------|---------------------------------------------------------------------------|
