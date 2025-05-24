@@ -8,7 +8,7 @@ This feature helps sellers determine competitive pricing based on real-time mark
 
 ## Live App
 
-- **Live App**: _https://trendies-price-suggestion.vercel.app/new-listing(https://trendies-price-suggestion.vercel.app/new-listing)_
+- **Live App**: _[https://trendies-price-suggestion.vercel.app/new-listing](https://trendies-price-suggestion.vercel.app/new-listing)_
 
 ---
 
